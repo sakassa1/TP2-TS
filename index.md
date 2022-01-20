@@ -1,5 +1,7 @@
 # TP2- Jeux de mots
 
+réalisé par SAKASSA RACHID
+
 # Synthèse et analyse spectrale d’une gamme de musique
 -------------------------------------------------------------------
 ## Objectifs
