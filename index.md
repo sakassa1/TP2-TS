@@ -123,4 +123,82 @@ phrase=[riennesertde,partir,ilfaut,courir];
 
   
  ![image](https://user-images.githubusercontent.com/85129301/150338670-5c0d5730-d7fb-4dcf-9123-8c849e596fc3.png)
+ 
+ ## Synthèse et analyse spectrale d’une gamme de musique
 
+Les notes de musique produites par un piano peuvent être synthétisées
+approximativement numériquement. En effet, chaque note peut être considérée
+comme étant un son pur produit par un signal sinusoïdal. La fréquence de la note
+« La » est par exemple de 440 Hz.
+
+1- Créez un programme qui permet de jouer une gamme de musique. La fréquence
+de chaque note est précisée dans le tableau ci-dessous. Chaque note aura une durée
+de 1s. La durée de la gamme sera donc de 8s. La fréquence d’échantillonnage fe sera
+fixée à 8192 Hz.
+
+![image](https://user-images.githubusercontent.com/85129301/150407986-5f20df0b-fe33-4f78-8236-4816a13ac670.png)
+
+```Matlab
+%Synthèse et analyse spectrale d’une gamme de musique
+
+clear all
+ Fs=8192;
+ Ts=1/Fs;
+ ts=[0:Ts:1];
+ Fdol=262; 
+ Fre=294; 
+ Fmi=330;
+ Ffa=349;
+ Fsol=392;
+ Fla=440;
+ Fsi=494;
+ Fdo=523;
+ dol=sin(2*pi*Fdol*ts);
+ re=sin(2*pi*Fre*ts);
+  mi=sin(2*pi*Fmi*ts);
+ sol=sin(2*pi*Fsol*ts);
+ la=sin(2*pi*Fla*ts);
+ si=sin(2*pi*Fsi*ts);
+ do=sin(2*pi*Fdo*ts);
+ fa=sin(2*pi*Ffa*ts);
+
+gamme=[dol,re,mi,fa,sol,la,si,do];
+
+%sound(gamme,Fs)
+
+```
+
+2- Utilisez l’outil graphique d’analyse de signaux signalAnalyzer pour visualiser le
+spectre de votre gamme. Observez les 8 fréquences contenues dans la gamme et
+vérifiez leur valeur numérique à l’aide des curseurs.
+
+
+![Capture d’écran 2022-01-20 143612](https://user-images.githubusercontent.com/85129301/150404076-7a86feb5-2408-41c3-b8d6-61f8020f0057.jpg)
+
+
+3- Tracez le spectrogramme qui permet de visualiser le contenu fréquentiel du signal
+au cours du temps (comme le fait une partition de musique) mais la précision sur l’axe
+des fréquences n’est pas suffisante pour relever précisément les 8 fréquences.
+
+![Capture d’écran 2022-01-20 144551](https://user-images.githubusercontent.com/85129301/150404128-ea23afde-78b8-4a32-b608-615443b440c9.jpg)
+
+
+## Approximation du spectre d’un signal sinusoïdal à temps continu par FFT
+
+4- Le spectre d’un signal à temps continu peut être approché par transformée de
+Fourier discrète (TFD) ou sa version rapide (Fast Fourier Transform (FFT). Afficher le
+spectre de fréquence de la gamme musicale crée en échelle linéaire, puis avec une
+échelle en décibels.
+
+
+S=abs(fft(gamme));
+u=mag2db(S);
+figure(3);
+fshift=(-length(gamme)/2:length(gamme)/2 -1 )*Fs/length(gamme);
+plot(fshift,fftshift(S));
+figure(4);
+plot(fshift,fftshift(u));
+
+
+MERCI 
+FIN.
