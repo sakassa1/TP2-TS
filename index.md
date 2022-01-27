@@ -192,7 +192,7 @@ Fourier discrète (TFD) ou sa version rapide (Fast Fourier Transform (FFT). Affi
 spectre de fréquence de la gamme musicale crée en échelle linéaire, puis avec une
 échelle en décibels.
 
-
+```Matlab
 S=abs(fft(gamme));
 u=mag2db(S);
 figure(3);
@@ -200,7 +200,7 @@ fshift=(-length(gamme)/2:length(gamme)/2 -1 )*Fs/length(gamme);
 plot(fshift,fftshift(S));
 figure(4);
 plot(fshift,fftshift(u));
-
+```
 
 MERCI 
 FIN.
