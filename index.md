@@ -1,6 +1,6 @@
 # TP2- Jeux de mots
 
-réalisé par SAKASSA RACHID
+réalisé par SAKASSA/BENZEMROUN
 
 # Synthèse et analyse spectrale d’une gamme de musique
 -------------------------------------------------------------------
